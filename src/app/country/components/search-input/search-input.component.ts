@@ -9,7 +9,7 @@ export class SearchInputComponent {
 
   placeholder = input.required<string>();
   value = output<string>();
-  debounceTime =input(300);
+  debounceTime =input(1000);
 
   inputValue = signal<string>('');
 
