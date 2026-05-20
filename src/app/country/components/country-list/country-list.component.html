@@ -1,0 +1,72 @@
+<section class="mt-5">
+  <table class="table table-md mt-2 w-full">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Icono</th>
+        <th>Bnadera</th>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Poblacion</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (country of countries(); track country.cca2; let index = $index) {
+        <tr>
+          <td>{{ index + 1}}</td>
+          <td>{{ country.flag}}</td>
+          <td>
+            <img [src]="country.flagsvg" [alt]="country.name" class="w-10" />
+          </td>
+          <td>{{country.name}}</td>
+          <td>{{country.capital}}</td>
+          <td>
+            <span class="badge badge-secondary">
+              {{country.population | number}}
+            </span>
+          </td>
+          <td>
+            <a
+              [routerLink]="['/country/by', country.cca2]"
+              class="link-primary">Mas informacion</a>
+          </td>
+        </tr>
+      }
+      @if(errorMessage()){
+        <tr>
+          <td colspan="8" class="text-center">
+            {{ errorMessage() }}
+          </td>
+        </tr>
+      }
+
+      <!---->
+      @if(countries().length == 0 && !isLoading()){
+        <tr>
+          <td colspan="8" class="text-center">
+            No se encontraron resultados
+          </td>
+        </tr>
+      }
+
+      <!---->
+      @if(isLoading()){
+        <tr>
+          <td colspan="8" class="bg-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 24 24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path fill="currentColor" d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z" opacity=".5" />
+              <path fill="currentColor" d="M20 12h2A10 10 0 0 0 12 2V4A8 8 0 0 1 20 12Z">
+                <animateTransform attributeName="transform" dur="1s" from="0 12 12" repeatCount="indefinite" to="360 12 12" type="rotate" />
+              </path>
+            </svg>
+          </td>
+        </tr>
+      }
+
+    </tbody>
+
+  </table>
+
+</section>

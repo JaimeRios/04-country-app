@@ -1,0 +1,56 @@
+<div class="flex justify-center items-center min-h-screen">
+  <div class="card bg-base-150 w-[800px] shadow-sm p-4">
+    <!-- CONTENEDOR DE IMÁGENES -->
+    <div class="flex gap-4 justify-center">
+
+      <figure class="flex-1">
+        <img
+          class="rounded-lg object-cover w-full"
+          [src]="country().flagsvg" [alt]="country().name"
+        />
+      </figure>
+      <figure class="flex-1">
+        <img
+          class="rounded-lg object-cover w-full"
+          [src]="country().coatOfArms" [alt]="country().name"
+        />
+      </figure>
+    </div>
+    <!-- INFORMACIÓN -->
+    <div class="card-body">
+      <div class="stats shadow">
+        <div class="stat place-items-center">
+          <div class="stat-title">Poblacion</div>
+          <div class="stat-value">{{ country().population | number}}</div>
+        </div>
+
+        <div class="stat place-items-center">
+          <div class="stat-title">Nombre</div>
+          <div class="stat-value text-secondary">{{ country().name }}</div>
+          <div class="stat-desc text-secondary">Capital: {{ country().capital}}</div>
+        </div>
+
+        <div class="stat place-items-center">
+          <div class="stat-title">Region</div>
+          <div class="stat-value">{{ country().region }}</div>
+          <div class="stat-desc">{{ country().subRegion }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="card bg-base-150 w-180 shadow-sm">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">Card Title</h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div> -->
